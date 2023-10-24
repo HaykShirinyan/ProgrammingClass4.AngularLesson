@@ -6,7 +6,7 @@ using System.Reflection.Metadata.Ecma335;
 
 namespace ProgrammingClass4.AngularLesson.Controllers
 {
-    [Route("api/productType")]
+    [Route("api/productTypes")]
     [ApiController]
     public class ProductTypesController : ControllerBase
     {
