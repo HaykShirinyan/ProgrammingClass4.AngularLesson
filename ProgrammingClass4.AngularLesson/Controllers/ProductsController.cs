@@ -20,6 +20,7 @@ namespace ProgrammingClass4.AngularLesson.Controllers
         public IActionResult GetAllProducts()
         {
             var products = _dbContext.Products.ToList();
+
             return Ok(products);
         }
 
