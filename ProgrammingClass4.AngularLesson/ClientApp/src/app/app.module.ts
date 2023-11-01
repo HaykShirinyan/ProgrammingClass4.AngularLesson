@@ -14,6 +14,7 @@ import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { ProductListComponent } from './products/list/product-list.component';
 import { UnitOfMeasureListComponent } from './unit-of-measures/list/unit-of-measure-list.component';
+import { ProductTypeListComponent } from './product-type/list/product-type-list.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { UnitOfMeasureListComponent } from './unit-of-measures/list/unit-of-meas
     FetchDataComponent,
     ProductListComponent,
     UnitOfMeasureListComponent,
-    ProductListComponent
+    ProductTypeListComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -37,7 +38,7 @@ import { UnitOfMeasureListComponent } from './unit-of-measures/list/unit-of-meas
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
       { path: 'products', component: ProductListComponent },
       { path: 'unitOfMeasures', component: UnitOfMeasureListComponent },
-      { path: 'productTypes', component: ProductListComponent}
+      { path: 'productTypes', component: ProductTypeListComponent }
     ])
   ],
   providers: [
