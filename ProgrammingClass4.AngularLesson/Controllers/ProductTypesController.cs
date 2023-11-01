@@ -82,7 +82,5 @@ namespace ProgrammingClass4.AngularLesson.Controllers
             
             return NotFound();
         }
-    
-    
     }
 }
