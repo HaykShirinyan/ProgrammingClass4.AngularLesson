@@ -33,8 +33,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\product-type\list\product-type-list.component.ts" />
     <None Remove="ClientApp\src\app\products\list\product-list.component.ts" />
+    <None Remove="ClientApp\src\app\shared\models\product-Type.ts" />
     <None Remove="ClientApp\src\app\shared\models\product.ts" />
+    <None Remove="ClientApp\src\app\shared\models\unit-Of-Measure.ts" />
+    <None Remove="ClientApp\src\app\unit-of-measures\list\unit-of-measure-list.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
