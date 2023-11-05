@@ -12,7 +12,6 @@ export class ProductTypeListComponent {
 
   constructor(http: HttpClient) {
     this._http = http;
-
   }
 
   public ngOnInit(): void {
