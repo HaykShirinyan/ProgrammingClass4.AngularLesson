@@ -35,6 +35,7 @@
     <None Remove="ClientApp\src\app\shared\models\product.ts" />
     <None Remove="ClientApp\src\app\shared\models\unit-of-measure.ts" />
     <None Remove="ClientApp\src\app\unit-of-measures\unit-of-measure-list.component.ts" />
+    <None Remove="ClientApp\src\app\shared\services\product.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
