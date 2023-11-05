@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using ProgrammingClass4.AngularLesson.Data;
 using ProgrammingClass4.AngularLesson.Models;
+using ProgrammingClass4.AngularLesson.Repositories.Definitions;
+using ProgrammingClass4.AngularLesson.Repositories.Implementations;
 
 namespace ProgrammingClass4.AngularLesson
 {
@@ -30,6 +32,8 @@ namespace ProgrammingClass4.AngularLesson
 
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
+
+            builder.Services.AddTransient<IProductRepository, ProductRepository>();
 
             var app = builder.Build();
 
