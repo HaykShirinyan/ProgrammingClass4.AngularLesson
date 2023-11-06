@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ProgrammingClass4.AngularLesson.Data;
 using ProgrammingClass4.AngularLesson.Models;
+using ProgrammingClass4.AngularLesson.Repositories.Definitions;
 
 namespace ProgrammingClass4.AngularLesson.Controllers
 {
@@ -9,25 +9,24 @@ namespace ProgrammingClass4.AngularLesson.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private readonly ApplicationDbContext _dbContext;
+        private readonly IProductRepository _productRepository;
 
-        public ProductsController(ApplicationDbContext dbContext)
+        public ProductsController(IProductRepository productRepository)
         {
-            _dbContext = dbContext;
+            _productRepository = productRepository;
         }
 
         [HttpGet]
         public IActionResult GetAllProducts()
         {
-            var products = _dbContext.Products.ToList();
-
+            var products = _productRepository.GetAllProducts();
             return Ok(products);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetProduct(int id)
         {
-            var product = _dbContext.Products.FirstOrDefault(x => x.Id == id);
+            var product = _productRepository.GetProduct(id);
 
             if (product != null)
             {
@@ -42,10 +41,8 @@ namespace ProgrammingClass4.AngularLesson.Controllers
         {
             if (ModelState.IsValid)
             {
-                _dbContext.Products.Add(product);
-                _dbContext.SaveChanges();
-
-                return Ok(product);
+                var addedProduct = _productRepository.AddProduct(product);
+                return Ok(addedProduct);
             }
 
             return BadRequest(ModelState);
@@ -61,10 +58,8 @@ namespace ProgrammingClass4.AngularLesson.Controllers
 
             if (ModelState.IsValid)
             {
-                _dbContext.Products.Update(product);
-                _dbContext.SaveChanges();
-
-                return Ok(product);
+                var updatedProduct = _productRepository.UpdateProduct(product);
+                return Ok(updatedProduct);
             }
 
             return BadRequest(ModelState);
@@ -73,15 +68,12 @@ namespace ProgrammingClass4.AngularLesson.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteProduct(int id)
         {
-            var product = _dbContext.Products.FirstOrDefault(product => product.Id == id);
+            var deletedProduct = _productRepository.DeleteProduct(id);
 
-            if (product != null)
+            if (deletedProduct != null)
             {
-                _dbContext.Products.Remove(product);
-                _dbContext.SaveChanges();
-
-                return Ok(product);
-            } 
+                return Ok(deletedProduct);
+            }
 
             return NotFound();
         }
