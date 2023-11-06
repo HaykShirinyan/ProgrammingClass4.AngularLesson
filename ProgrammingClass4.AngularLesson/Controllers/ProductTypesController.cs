@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using ProgrammingClass4.AngularLesson.Data;
 using ProgrammingClass4.AngularLesson.Models;
+using ProgrammingClass4.AngularLesson.Repositories.Definitions;
+using ProgrammingClass4.AngularLesson.Repositories.Implementations;
 
 namespace ProgrammingClass4.AngularLesson.Controllers
 {
@@ -9,24 +11,24 @@ namespace ProgrammingClass4.AngularLesson.Controllers
     [ApiController]
     public class ProductTypesController : ControllerBase
     {
-        private readonly ApplicationDbContext _dbContext;
+        private readonly IProductTypeRepository _productTypeRepository;
 
-        public ProductTypesController(ApplicationDbContext dbContext)
+        public ProductTypesController(IProductTypeRepository productTypeRepository)
         {
-            _dbContext = dbContext;
+            _productTypeRepository = productTypeRepository;
         }
 
         [HttpGet]
         public IActionResult GetAllProductTypes()
         {
-            var productTypes = _dbContext.ProductTypes.ToList();
+            var productTypes = _productTypeRepository.GetAllProductTypes();
             return Ok(productTypes);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetProductType(int id) 
         { 
-            var productType = _dbContext.ProductTypes.FirstOrDefault(x => x.Id == id);
+            var productType = _productTypeRepository.GetProductType(id);
             
             if(productType !=null) 
             { 
@@ -41,9 +43,8 @@ namespace ProgrammingClass4.AngularLesson.Controllers
         {
             if(ModelState.IsValid)
             {
-                _dbContext.ProductTypes.Add(productType);
-                _dbContext.SaveChanges();
-                return Ok(productType);
+                var addProductType = _productTypeRepository.AddProductType(productType);
+                return Ok(addProductType);
             }
             return BadRequest(ModelState);
         }
@@ -58,9 +59,9 @@ namespace ProgrammingClass4.AngularLesson.Controllers
            
             if(ModelState.IsValid)
             {
-                _dbContext.ProductTypes.Update(productType);
-                _dbContext.SaveChanges();
-                return Ok(productType);
+               var updateProductType = _productTypeRepository.UpdateProductType(productType);
+                return Ok(updateProductType);
+               
             }
             
             return BadRequest(ModelState);
@@ -70,16 +71,12 @@ namespace ProgrammingClass4.AngularLesson.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteProductType(int id)
         {
-            var productType = _dbContext.ProductTypes.FirstOrDefault(productType => productType.Id == id);
-            
-            if(productType != null)
+            var deleteProductType = _productTypeRepository.DeleteProductType(id);
+
+            if (deleteProductType != null)
             {
-                _dbContext.ProductTypes.Remove(productType);
-                _dbContext.SaveChanges();
-                
-                return Ok(productType);
+                return Ok(deleteProductType);
             }
-            
             return NotFound();
         }
     }

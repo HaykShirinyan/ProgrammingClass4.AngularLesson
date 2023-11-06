@@ -34,6 +34,8 @@ namespace ProgrammingClass4.AngularLesson
             builder.Services.AddRazorPages();
 
             builder.Services.AddTransient<IProductRepository, ProductRepository>();
+            builder.Services.AddTransient<IProductTypeRepository, ProductTypeRepository>();
+            builder.Services.AddTransient<IUnitOfMeasureRepository, UnitOfMeasureRepository>();
 
             var app = builder.Build();
 

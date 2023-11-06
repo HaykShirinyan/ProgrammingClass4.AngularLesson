@@ -12,6 +12,6 @@ namespace ProgrammingClass4.AngularLesson.Repositories.Definitions
 
         Product? UpdateProduct(Product product);
 
-        Product? DeleteProduct(int id);
+        Product? DeleteProduct(int id); 
     }
 }
