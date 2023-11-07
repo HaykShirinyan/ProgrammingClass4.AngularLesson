@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Component } from "@angular/core";
 import { UnitOfMeasure } from "../../shared/models/unit-of-measure";
+import { UnitOfMeasureService } from "../../shared/services/unit-of-measure.service";
 
 
 
@@ -8,16 +9,16 @@ import { UnitOfMeasure } from "../../shared/models/unit-of-measure";
   templateUrl: './unit-of-measure-list.component.html'
 })
 export class UnitOfMeasureListComponent {
-  private readonly _http: HttpClient;
+  private readonly _unitOfMeasureService:UnitOfMeasureService;
 
   public unitOfMeasures?: UnitOfMeasure[];
 
-  constructor(http: HttpClient) {
-    this._http = http;
+  constructor(unitOfMeasureService: UnitOfMeasureService) {
+    this._unitOfMeasureService = unitOfMeasureService
   }
 
   public ngOnInit(): void {
-    this._http.get<UnitOfMeasure[]>('/api/unitOfMeasures')
+    this._unitOfMeasureService.getAll()
       .subscribe(apiUnitOfMeasures => {
         this.unitOfMeasures = apiUnitOfMeasures
       });
