@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using ProgrammingClass4.AngularLesson.Data;
 using ProgrammingClass4.AngularLesson.Models;
+using ProgrammingClass4.AngularLesson.Repositories.Definitions;
+using ProgrammingClass4.AngularLesson.Repositories.Implementations;
 
 namespace ProgrammingClass4.AngularLesson.Controllers
 {
@@ -9,24 +11,24 @@ namespace ProgrammingClass4.AngularLesson.Controllers
     [ApiController]
     public class UnitOfMeasuresController : ControllerBase
     {
-        private readonly ApplicationDbContext _dbContext;
+        private readonly IUnitOfMeasureRepository _unitOfMeasureRepository;
 
-        public UnitOfMeasuresController(ApplicationDbContext dbContext)
+        public UnitOfMeasuresController(IUnitOfMeasureRepository unitOfMeasureRepository)
         {
-            _dbContext = dbContext;
+            _unitOfMeasureRepository = unitOfMeasureRepository;
         }
 
         [HttpGet]
         public IActionResult GetAllUnitOfMeasures()
         {
-            var unitOfMeasures = _dbContext.UnitOfMeasures.ToList();
+            var unitOfMeasures = _unitOfMeasureRepository.GetAllUnits();
 
             return Ok(unitOfMeasures);
         }
         [HttpGet("{id}")]
         public IActionResult GetUnitOfMeasure(int id)
         {
-            var unitOfMeasure = _dbContext.UnitOfMeasures.Find(id);
+            var unitOfMeasure = _unitOfMeasureRepository.GetUnit(id);
 
             if (unitOfMeasure != null)
             {
@@ -40,10 +42,9 @@ namespace ProgrammingClass4.AngularLesson.Controllers
         {
             if (ModelState.IsValid)
             {
-                _dbContext.UnitOfMeasures.Add(unitOfMeasure);
-                _dbContext.SaveChanges();
+                var addedUnitOfMeasure = _unitOfMeasureRepository.AddUnit(unitOfMeasure);
 
-                return Ok(unitOfMeasure);
+                return Ok(addedUnitOfMeasure);
             }
 
             return BadRequest(ModelState);
@@ -58,10 +59,9 @@ namespace ProgrammingClass4.AngularLesson.Controllers
 
             if (ModelState.IsValid)
             {
-                _dbContext.UnitOfMeasures.Update(unitOfMeasure);
-                _dbContext.SaveChanges();
+                var updatedUnit = _unitOfMeasureRepository.UpdateUnit(unitOfMeasure);
 
-                return Ok(unitOfMeasure);
+                return Ok(updatedUnit);
             }
 
             return BadRequest(ModelState);
@@ -70,14 +70,11 @@ namespace ProgrammingClass4.AngularLesson.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteUnitOfMeasure(int id)
         {
-            var unitOfMeasure = _dbContext.UnitOfMeasures.Find(id);
+            var deletedUnit = _unitOfMeasureRepository.DeleteUnit(id);
 
-            if (unitOfMeasure != null)
+            if (deletedUnit != null)
             {
-                _dbContext.UnitOfMeasures.Remove(unitOfMeasure);
-                _dbContext.SaveChanges();
-
-                return Ok(unitOfMeasure);
+                return Ok(deletedUnit);
             }
 
             return NotFound();
