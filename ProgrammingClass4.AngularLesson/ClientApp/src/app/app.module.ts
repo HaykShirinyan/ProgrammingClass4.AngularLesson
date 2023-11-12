@@ -15,6 +15,8 @@ import { AuthorizeInterceptor } from 'src/api-authorization/authorize.intercepto
 import { ProductListComponent } from './products/list/product-list.component';
 import { ProductTypeListComponent } from './product-types/list/product-type-list.component';
 import { UnitOfMeasureListComponent } from './unit-of-measures/unit-of-measure-list.component';
+import { CreateProductComponent } from './products/create/create-product.component';
+import { EditProductComponent } from './products/edit/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,9 @@ import { UnitOfMeasureListComponent } from './unit-of-measures/unit-of-measure-l
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
+    ProductListComponent,
+    CreateProductComponent,
+    EditProductComponent
     ProductListComponent,
     ProductTypeListComponent,
     UnitOfMeasureListComponent
@@ -39,6 +44,9 @@ import { UnitOfMeasureListComponent } from './unit-of-measures/unit-of-measure-l
       { path: 'products', component: ProductListComponent },
       { path: 'product-types', component: ProductTypeListComponent },
       { path: 'unit-of-measures', component:UnitOfMeasureListComponent }
+      { path: 'products', component: ProductListComponent },
+      { path: 'products/create', component: CreateProductComponent },
+      { path: 'products/edit/:id', component: EditProductComponent }
     ])
   ],
   providers: [
