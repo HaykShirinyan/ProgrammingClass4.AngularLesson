@@ -2,12 +2,16 @@
     Product Type List
 </h1>
 
+<a [routerLink] ="['create']" class="btn btn-primary">
+  Create ProductType
+</a>
 <table class="table">
   <thead>
     <tr>
       <th>Id</th>
       <th>Name</th>
       <th>Description</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -20,6 +24,11 @@
       </td>
       <td>
         {{productType.description}}
+      </td>
+      <td>
+        <a [routerLink] ="['edit', productType.id]" class="btn btn-secondary">
+           Edit
+        </a>
       </td>
     </tr>
   </tbody>

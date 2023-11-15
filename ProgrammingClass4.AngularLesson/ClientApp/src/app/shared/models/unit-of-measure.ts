@@ -1,6 +1,6 @@
 
 export interface UnitOfMeasure {
-  id: number;
-  name: string;
-  description: string;
+  id?: number;
+  name?: string;
+  description?: string; 
 }

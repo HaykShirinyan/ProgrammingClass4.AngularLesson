@@ -28,6 +28,7 @@ namespace ProgrammingClass4.AngularLesson.Controllers
         [HttpGet("{id}")]
         public IActionResult GetProductType(int id) 
         { 
+            
             var productType = _productTypeRepository.GetProductType(id);
             
             if(productType !=null) 

@@ -29,6 +29,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\product-types\create\create-product-type.component.ts" />
+    <None Remove="ClientApp\src\app\product-types\edit\edit-product-type.component.ts" />
     <None Remove="ClientApp\src\app\products\create\create-product.component.ts" />
     <None Remove="ClientApp\src\app\products\edit\edit-product.component.ts" />
     <None Remove="ClientApp\src\app\products\list\product-list.component.ts" />
@@ -38,11 +40,15 @@
     <None Remove="ClientApp\src\app\shared\models\unit-of-measure.ts" />
     <None Remove="ClientApp\src\app\shared\Service\product-type.service.ts" />
     <None Remove="ClientApp\src\app\shared\Service\unit-of-measure.service.ts" />
+    <None Remove="ClientApp\src\app\unit-of-measures\create\unit-of-measure.component.ts" />
+    <None Remove="ClientApp\src\app\unit-of-measures\edit\edit-unit-of-measure.component.ts" />
     <None Remove="ClientApp\src\app\unit-of-measures\unit-of-measure-list.component.ts" />
     <None Remove="ClientApp\src\app\shared\services\product.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\product-types\create\create-product-type.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\product-types\edit\edit-product-type.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\products\create\create-product.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\products\edit\edit-product.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\products\list\product-list.component.ts" />
@@ -52,7 +58,12 @@
     <TypeScriptCompile Include="ClientApp\src\app\shared\models\unit-of-measure.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\Service\product-type.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\Service\unit-of-measure.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\unit-of-measures\edit\edit-unit-of-measure.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\unit-of-measures\unit-of-measure-list.component.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\unit-of-measures\list\" />
   </ItemGroup>
 
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
