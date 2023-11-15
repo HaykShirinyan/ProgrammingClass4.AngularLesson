@@ -17,6 +17,10 @@ import { UnitOfMeasureListComponent } from './unit-of-measures/list/unit-of-meas
 import { ProductTypeListComponent } from './product-type/list/product-type-list.component';
 import { CreateProductComponent } from './products/create/create-product.component';
 import { EditProductComponent } from './products/edit/edit-product.component';
+import { CreateProductTypeComponent } from './product-type/create/create-product-type.component';
+import { CreateUnitOfMeasureComponent } from './unit-of-measures/create/create-unit-of-measure.component';
+import { EditUnitOfMeasureComponent } from './unit-of-measures/edit/edit-unit-of-measure.component';
+import { EditProductTypeComponent } from './product-type/edit/edit-product-type.component';
 
 @NgModule({
   declarations: [
@@ -27,10 +31,13 @@ import { EditProductComponent } from './products/edit/edit-product.component';
     FetchDataComponent,
     ProductListComponent,
     UnitOfMeasureListComponent,
-    ProductTypeListComponent
-    ProductListComponent,
+    ProductTypeListComponent,
     CreateProductComponent,
-    EditProductComponent
+    EditProductComponent,
+    CreateProductTypeComponent,
+    CreateUnitOfMeasureComponent,
+    EditUnitOfMeasureComponent,
+    EditProductTypeComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -43,10 +50,13 @@ import { EditProductComponent } from './products/edit/edit-product.component';
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
       { path: 'products', component: ProductListComponent },
       { path: 'unitOfMeasures', component: UnitOfMeasureListComponent },
-      { path: 'productTypes', component: ProductTypeListComponent }
-      { path: 'products', component: ProductListComponent },
+      { path: 'productTypes', component: ProductTypeListComponent },
       { path: 'products/create', component: CreateProductComponent },
-      { path: 'products/edit/:id', component: EditProductComponent }
+      { path: 'products/edit/:id', component: EditProductComponent },
+      { path: 'productTypes/create', component: CreateProductTypeComponent },
+      { path: 'unitOfMeasures/create', component: CreateUnitOfMeasureComponent },
+      { path: 'unitOfMeasures/edit/:id', component: EditUnitOfMeasureComponent },
+      { path: 'productTypes/edit/:id', component: EditProductTypeComponent}
     ])
   ],
   providers: [

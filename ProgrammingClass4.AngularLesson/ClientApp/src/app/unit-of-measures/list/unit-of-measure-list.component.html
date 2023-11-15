@@ -3,12 +3,17 @@
   UnitOfMeasure List
 </h1>
 
+<a [routerLink]="['create']" class="btn btn-primary">
+  Create Product
+</a>
+
 <table class="table">
   <thead>
     <tr>
       <th>ID</th>
       <th>Name</th>
       <th>Description</th>
+      <th>Actions</th>
     </tr>
   </thead>
 
@@ -22,6 +27,11 @@
       </td>
       <td>
         {{unit.description}}
+      </td>
+      <td>
+        <a [routerLink]="['edit', unit.id]" class="btn btn-secondary">
+          Edit
+        </a>
       </td>
     </tr>
   </tbody>

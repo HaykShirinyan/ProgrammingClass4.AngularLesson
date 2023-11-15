@@ -33,6 +33,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\product-type\create\create-product-type.component.ts" />
+    <None Remove="ClientApp\src\app\product-type\edit\edit-product-type.component.ts" />
     <None Remove="ClientApp\src\app\product-type\list\product-type-list.component.ts" />
     <None Remove="ClientApp\src\app\products\create\create-product.component.ts" />
     <None Remove="ClientApp\src\app\products\edit\edit-product.component.ts" />
@@ -42,6 +44,8 @@
     <None Remove="ClientApp\src\app\shared\services\product-type.service.ts" />
     <None Remove="ClientApp\src\app\shared\services\product.service.ts" />
     <None Remove="ClientApp\src\app\shared\services\unit-of-measure.service.ts" />
+    <None Remove="ClientApp\src\app\unit-of-measures\create\create-unit-of-measure.component.ts" />
+    <None Remove="ClientApp\src\app\unit-of-measures\edit\edit-unit-of-measure.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
