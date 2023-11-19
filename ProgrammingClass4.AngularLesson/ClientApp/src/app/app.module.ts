@@ -15,6 +15,7 @@ import { AuthorizeInterceptor } from 'src/api-authorization/authorize.intercepto
 import { ProductListComponent } from './products/list/product-list.component';
 import { CreateProductComponent } from './products/create/create-product.component';
 import { EditProductComponent } from './products/edit/edit-product.component';
+import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { EditProductComponent } from './products/edit/edit-product.component';
     FetchDataComponent,
     ProductListComponent,
     CreateProductComponent,
-    EditProductComponent
+    EditProductComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

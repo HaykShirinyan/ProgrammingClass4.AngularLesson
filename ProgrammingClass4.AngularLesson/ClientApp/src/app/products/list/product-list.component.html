@@ -7,6 +7,12 @@
   Create Product
 </a>
 
+<app-loading-spinner *ngIf="isLoading"
+                     message="Loading Products"
+                     [canCancel]="true"
+                     (cancel)="cancelLoadingProducts()">
+</app-loading-spinner>
+
 <table class="table">
   <thead>
     <tr>
