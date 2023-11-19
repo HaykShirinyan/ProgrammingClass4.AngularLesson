@@ -31,7 +31,6 @@ export class EditProductTypeComponent implements OnInit {
         .subscribe(() => {
           this._router.navigate(['/product-types']);
         });
-      
     }
   }
 }
