@@ -9,6 +9,7 @@ import { ProductService } from "../../shared/services/product.service";
 })
 export class CreateProductComponent {
   public product: Product = {};
+  public isLoading: boolean = false;
 
   constructor(
     private readonly _productService: ProductService,
@@ -18,9 +19,12 @@ export class CreateProductComponent {
 
   public createProduct(form: NgForm): void {
     if (form.valid) {
+      this.isLoading = true;
+
       this._productService.addProduct(this.product)
         .subscribe(() => {
           this._router.navigate(['/products']);
+          this.isLoading = false;
         });
     }
   }

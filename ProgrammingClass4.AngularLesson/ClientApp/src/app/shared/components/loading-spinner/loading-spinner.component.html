@@ -1,0 +1,16 @@
+
+<div class="app-spinner-container">
+  <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
+  <div *ngIf="message" class="mt-2">
+    <p>
+      {{message}}
+    </p>
+  </div>
+
+  <div *ngIf="canCancel">
+    <button type="button" class="btn btn-secondary" (click)="onCancel()">
+      Cancel
+    </button>
+  </div>
+</div>
