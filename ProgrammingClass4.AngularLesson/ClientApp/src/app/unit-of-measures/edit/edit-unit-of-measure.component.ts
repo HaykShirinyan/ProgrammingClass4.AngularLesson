@@ -26,7 +26,7 @@ export class EditUnitOfMeasureComponent implements OnInit {
       });
   }
 
-  public updateUnitOfMeasure(form: NgForm): void {
+  public editUnitOfMeasure(form: NgForm): void {
     if (form.valid) {
       this._unitOfMeasureService.updateUnitOfMeasure(this.unitOfMeasure)
         .subscribe(() => {

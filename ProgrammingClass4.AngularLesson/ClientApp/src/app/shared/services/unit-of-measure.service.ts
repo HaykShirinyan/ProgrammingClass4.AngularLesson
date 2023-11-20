@@ -26,6 +26,6 @@ export class UnitOfMeasureService {
   }
 
   public updateUnitOfMeasure(unitOfMeasure: UnitOfMeasure): Observable<UnitOfMeasure> {
-    return this._http.put<UnitOfMeasure>('/api/products/' + unitOfMeasure.id, unitOfMeasure);
+    return this._http.put<UnitOfMeasure>('/api/unitOfMeasures/' + unitOfMeasure.id, unitOfMeasure);
   }
 }

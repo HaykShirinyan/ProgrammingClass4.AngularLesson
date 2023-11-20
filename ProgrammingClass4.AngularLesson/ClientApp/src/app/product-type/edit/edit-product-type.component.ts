@@ -25,7 +25,7 @@ export class EditProductTypeComponent implements OnInit {
       });
   }
 
-  public updateProductType(form: NgForm): void {
+  public editProductType(form: NgForm): void {
     if (form.valid) {
       this._productTypeService.updateProductType(this.productType)
         .subscribe(() => {
