@@ -15,7 +15,7 @@ export class ProductTypeService {
   }
 
   public getAll(): Observable<ProductType[]> {
-    return this._http.get<ProductType[]>("./api/productTypes");
+    return this._http.get<ProductType[]>("/api/productTypes");
   }
   public addProductType(productType: ProductType): Observable<ProductType> {
     return this._http.post<ProductType>('/api/productTypes', productType);

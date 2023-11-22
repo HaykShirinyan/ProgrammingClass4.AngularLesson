@@ -11,4 +11,11 @@ import { Component, Input } from "@angular/core";
 export class BackComponent {
   @Input()
   public header?: string;
+
+  @Input()
+  public backRouter?: string[];
+
+  @Input()
+  public backRouterText?: string;
+
 }
