@@ -38,9 +38,7 @@ import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loa
     CreateProductTypeComponent,
     EditProductTypeComponent,
     CreateUnitOfMeasureComponent,
-    EditUnitOfMeasureComponent
-    CreateProductComponent,
-    EditProductComponent,
+    EditUnitOfMeasureComponent,
     LoadingSpinnerComponent
   ],
   imports: [
