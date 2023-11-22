@@ -6,7 +6,7 @@
     </p>
   </div>
 
-  <div>
+  <div *ngIf="showBackbutton">
     <a [routerLink]="backRouter" class="btn btn-primary">
       back to producttype list
     </a>

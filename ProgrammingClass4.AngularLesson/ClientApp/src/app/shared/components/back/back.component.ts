@@ -16,6 +16,9 @@ export class BackComponent {
   public backRouter?: string[];
 
   @Input()
+  public showBackButton?: boolean = false;
+
+  @Input()
   public backRouterText?: string;
 
 }
