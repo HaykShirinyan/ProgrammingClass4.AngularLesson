@@ -21,6 +21,7 @@ import { CreateProductTypeComponent } from './product-types/create/create-produc
 import { EditProductTypeComponent } from './product-types/edit/edit-product-type.component';
 import { CreateUnitOfMeasureComponent } from './unit-of-measures/create/create-unit-of-measure.component';
 import { EditUnitOfMeasureComponent } from './unit-of-measures/edit/edit-unit-of-measure.component';
+import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,9 @@ import { EditUnitOfMeasureComponent } from './unit-of-measures/edit/edit-unit-of
     EditProductTypeComponent,
     CreateUnitOfMeasureComponent,
     EditUnitOfMeasureComponent
+    CreateProductComponent,
+    EditProductComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
