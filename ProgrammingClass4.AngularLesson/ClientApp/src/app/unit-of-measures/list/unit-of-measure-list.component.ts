@@ -12,15 +12,21 @@ export class UnitOfMeasureListComponent {
   private readonly _unitOfMeasureService:UnitOfMeasureService;
 
   public unitOfMeasures?: UnitOfMeasure[];
+  public isLoading: boolean = false;
 
   constructor(unitOfMeasureService: UnitOfMeasureService) {
     this._unitOfMeasureService = unitOfMeasureService
   }
 
   public ngOnInit(): void {
+    this.isLoading = true;
     this._unitOfMeasureService.getAll()
       .subscribe(apiUnitOfMeasures => {
         this.unitOfMeasures = apiUnitOfMeasures
+        this.isLoading = false;
       });
+  }
+  public cancelLoadingUnit(): void {
+    this.isLoading = false;
   }
 }

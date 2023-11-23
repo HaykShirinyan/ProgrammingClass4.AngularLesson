@@ -9,6 +9,8 @@ import { NgForm } from "@angular/forms";
 })
 export class EditProductTypeComponent implements OnInit {
   public productType: ProductType = {};
+  public isLoading: boolean = false;
+  public spinnerMessage?: string;
 
   constructor(
     private readonly _productTypeService: ProductTypeService,
@@ -19,17 +21,23 @@ export class EditProductTypeComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    this.isLoading = true;
     this._productTypeService.getProductType(+this._activeRoute.snapshot.paramMap.get('id')!)
       .subscribe(productType => {
         this.productType = productType;
+        this.isLoading = false;
       });
   }
 
   public editProductType(form: NgForm): void {
     if (form.valid) {
+      this.isLoading = true;
+      this.spinnerMessage = 'Updating Product';
+
       this._productTypeService.updateProductType(this.productType)
         .subscribe(() => {
           this._router.navigate(['/productTypes']);
+          this.isLoading = false;
         });
     }
   }

@@ -9,6 +9,7 @@ import { NgForm } from "@angular/forms";
 })
 export class CreateProductTypeComponent {
   public productType: ProductType = {};
+  public isLoading: boolean = false;
 
   constructor(
     private readonly _productTypeService: ProductTypeService,
@@ -18,9 +19,12 @@ export class CreateProductTypeComponent {
 
   public createProductType(form: NgForm): void {
     if (form.valid) {
+      this.isLoading = true;
+
       this._productTypeService.addProductType(this.productType)
         .subscribe(() => {
           this._router.navigate(['/productTypes']);
+          this.isLoading = false;
         });
     }
   }

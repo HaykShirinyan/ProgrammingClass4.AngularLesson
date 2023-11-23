@@ -9,6 +9,7 @@ import { NgForm } from "@angular/forms";
 })
 export class CreateUnitOfMeasureComponent {
   public unitOfMeasure: UnitOfMeasure = {};
+  public isLoading: boolean = false;
 
   constructor(
     private readonly _unitOfMeasureService: UnitOfMeasureService,
@@ -18,9 +19,11 @@ export class CreateUnitOfMeasureComponent {
 
   public createUnitOfMeasure(form: NgForm): void {
     if (form.valid) {
+      this.isLoading = true;
       this._unitOfMeasureService.addUnitOfMeasure(this.unitOfMeasure)
         .subscribe(() => {
           this._router.navigate(['/unitOfMeasures']);
+          this.isLoading = false;
         });
     }
   }

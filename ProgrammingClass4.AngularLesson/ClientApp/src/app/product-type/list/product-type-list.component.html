@@ -6,6 +6,11 @@
 <a [routerLink]="['create']" class="btn btn-primary">
   Create ProductType
 </a>
+<app-loading-spinner *ngIf="isLoading"
+                     message="Loading ProductType"
+                     [canCancel]="true"
+                     (cancel)="cancelLoadingProductType()">
+</app-loading-spinner>
 
 <table class="table">
   <thead>

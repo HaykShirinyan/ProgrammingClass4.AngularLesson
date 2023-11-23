@@ -4,6 +4,10 @@
           backRouterText="Back to productType">
 </app-back>
 
+<app-loading-spinner *ngIf="isLoading"
+                     [message]="spinnerMessage">
+</app-loading-spinner>
+
 <div>
   <form #productTypeForm="ngForm" (ngSubmit)="editProductType(productTypeForm)">
     <div class="mb-3">

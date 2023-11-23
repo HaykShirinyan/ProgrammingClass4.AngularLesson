@@ -4,6 +4,9 @@
           [showBackButton] ="true"
           backRouterText="Back to productType"> 
 </app-back>
+<app-loading-spinner *ngIf="isLoading"
+                     message="Creating ProductType">
+</app-loading-spinner>
 
 <div>
   <form #productTypeForm="ngForm" (ngSubmit)="createProductType(productTypeForm)">

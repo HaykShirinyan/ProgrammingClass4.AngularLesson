@@ -3,6 +3,12 @@
 
 </app-back>
 
+<app-loading-spinner *ngIf="isLoading"
+                     message="Loading UnitOfMeasures"
+                     [canCancel]="true"
+                     (cancel)="cancelLoadingUnit()">
+</app-loading-spinner>
+
 <a [routerLink]="['create']" class="btn btn-primary">
   Create Product
 </a>

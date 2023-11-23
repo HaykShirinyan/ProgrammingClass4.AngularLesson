@@ -6,6 +6,10 @@
 
 </app-back>
 
+<app-loading-spinner *ngIf="isLoading"
+                     [message]="spinnerMessage">
+</app-loading-spinner>
+
 <div>
   <form #unitOfMeasureForm="ngForm" (ngSubmit)="editUnitOfMeasure(unitOfMeasureForm)">
     <div class="mb-3">

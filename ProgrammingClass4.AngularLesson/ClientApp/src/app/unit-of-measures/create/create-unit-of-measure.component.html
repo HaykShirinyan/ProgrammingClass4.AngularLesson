@@ -1,10 +1,15 @@
 
 <app-back header="Create Unit Of Measure"
           [backRouter]="['/unitOfMeasures']"
-          [showBackButton] ="true"
+          [showBackButton]="true"
           backRouterText="Back to UnitOfMeasures">
-
 </app-back>
+
+<app-loading-spinner *ngIf="isLoading"
+                     message="Creating UnitOFMeasures">
+</app-loading-spinner>
+
+
 
 <div>
   <form #unitOfMeasureForm="ngForm" (ngSubmit)="createUnitOfMeasure(unitOfMeasureForm)">

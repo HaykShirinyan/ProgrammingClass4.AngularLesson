@@ -10,6 +10,8 @@ import { NgForm } from "@angular/forms";
 
 export class EditUnitOfMeasureComponent implements OnInit {
   public unitOfMeasure: UnitOfMeasure = {};
+  public isLoading: boolean = false;
+  public spinnerMessage?: string;
 
   constructor(
     private readonly _unitOfMeasureService: UnitOfMeasureService,
@@ -20,17 +22,23 @@ export class EditUnitOfMeasureComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    this.isLoading = true;
+    this.spinnerMessage = 'Loading UnitOfMeasure';
+
     this._unitOfMeasureService.getUnitOfMeasure(+this._activeRoute.snapshot.paramMap.get('id')!)
       .subscribe(unitOfMeasure => {
-        this.unitOfMeasure = unitOfMeasure ;
+        this.unitOfMeasure = unitOfMeasure;
+        this.isLoading = false;
       });
   }
 
   public editUnitOfMeasure(form: NgForm): void {
     if (form.valid) {
+      this.isLoading = true;
       this._unitOfMeasureService.updateUnitOfMeasure(this.unitOfMeasure)
         .subscribe(() => {
           this._router.navigate(['/unitOfMeasures']);
+          this.isLoading = false;
         });
     }
   }
