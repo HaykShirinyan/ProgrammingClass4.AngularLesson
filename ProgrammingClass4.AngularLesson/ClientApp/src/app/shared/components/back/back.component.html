@@ -1,13 +1,13 @@
 
 <div>
-  <div *ngIf="header" class="mt-2">
+  <div *ngIf="header" class="mt-2 text-sm-center text-bg-success size">
     <p>
       {{header}}
     </p>
   </div>
 
-  <div *ngIf="showBackButton">
-    <a [routerLink]="backRouter" class="btn btn-primary">
+  <div *ngIf="showBackButton" >
+    <a [routerLink]="backRouter" class="btn btn-primary button">
       {{backRouterText}}
     </a>
   </div>
