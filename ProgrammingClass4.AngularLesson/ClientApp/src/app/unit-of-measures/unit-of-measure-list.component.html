@@ -3,6 +3,8 @@
   Unit Of Measures List
 </h1>
 
+<app-loading-spinner *ngIf ="isLoading" message="Loading Unit Of Measures"></app-loading-spinner>
+
 <a [routerLink] ="['create']" class="btn btn-primary">
    Create UnitOfMeasure
 </a>

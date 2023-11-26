@@ -3,6 +3,10 @@
   Edit Product Type
 </h2>
 
+<app-loading-spinner *ngIf ="isLoading" [message] ="spinnerMessage"></app-loading-spinner>
+
+<app-cancel [canCancel]="true" (cancel)="cancelEditing()"></app-cancel>
+
 <div>
   <form #productTypeForm ="ngForm" (ngSubmit) ="updateProductType(productTypeForm)">
     <div class="mb-3">

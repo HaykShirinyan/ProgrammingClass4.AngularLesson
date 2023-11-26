@@ -10,15 +10,19 @@ export class UnitOfMeasureListComponent {
   private readonly _unitOfMeasureService:UnitOfMeasureService
 
   public measures?: UnitOfMeasure[];
+  public isLoading: boolean = false;
 
   constructor(unitOfMeasureService:UnitOfMeasureService) {
     this._unitOfMeasureService = unitOfMeasureService
   }
 
   public ngOnInit(): void {
+    this.isLoading = true;
+
     this._unitOfMeasureService.getAllUnitOfMeasures()
       .subscribe(apiMeasures => {
         this.measures = apiMeasures
+        this.isLoading = false;
       });
   }
 }

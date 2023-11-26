@@ -2,6 +2,11 @@
 <h2>
   Edit Unit Of Measure
 </h2>
+
+<app-loading-spinner *ngIf="isLoading" [message]="spinnerMessage"></app-loading-spinner>
+
+<app-cancel [canCancel]="true" (cancel)="cancelEditing()"></app-cancel>
+
 <div>
   <form #unitOfMeasureForm="ngForm" (ngSubmit)="updateUnitOfMeasure(unitOfMeasureForm)">
     <div class="mb-3">

@@ -3,6 +3,10 @@
   Create Unit Of Measure
 </h1>
 
+<app-loading-spinner *ngIf="isLoading" message ="Create Unit Of Measure"></app-loading-spinner>
+
+<app-cancel [canCancel]="true" (cancel)="cancelCreating()"></app-cancel>
+
 <div>
   <form #unitOfMeasureForm ="ngForm" (ngSubmit) ="createUnitOfMeasure(unitOfMeasureForm)">
     <div class="mb-3">
