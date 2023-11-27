@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ProgrammingClass4.AngularLesson.Models;
-using ProgrammingClass4.AngularLesson.Repositories.Definitions;
+using ProgrammingClass4.AngularLesson.DataTransferObjects;
+using ProgrammingClass4.AngularLesson.Services.Definitions;
 
 namespace ProgrammingClass4.AngularLesson.Controllers
 {
@@ -9,24 +10,24 @@ namespace ProgrammingClass4.AngularLesson.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private readonly IProductRepository _productRepository;
+        private readonly IProductService _productService;
 
-        public ProductsController(IProductRepository productRepository)
+        public ProductsController(IProductService productService)
         {
-            _productRepository = productRepository;
+            _productService = productService;
         }
 
         [HttpGet]
         public IActionResult GetAllProducts()
         {
-            var products = _productRepository.GetAllProducts();
+            var products = _productService.GetAllProducts();
             return Ok(products);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetProduct(int id)
         {
-            var product = _productRepository.GetProduct(id);
+            var product = _productService.GetProduct(id);
 
             if (product != null)
             {
@@ -37,11 +38,11 @@ namespace ProgrammingClass4.AngularLesson.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddProduct(Product product)
+        public IActionResult AddProduct(ProductDto product)
         {
             if (ModelState.IsValid)
             {
-                var addedProduct = _productRepository.AddProduct(product);
+                var addedProduct = _productService.AddProduct(product);
                 return Ok(addedProduct);
             }
 
@@ -49,7 +50,7 @@ namespace ProgrammingClass4.AngularLesson.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateProduct(int id, Product product)
+        public IActionResult UpdateProduct(int id, ProductDto product)
         {
             if (id != product.Id)
             {
@@ -58,7 +59,8 @@ namespace ProgrammingClass4.AngularLesson.Controllers
 
             if (ModelState.IsValid)
             {
-                var updatedProduct = _productRepository.UpdateProduct(product);
+                var updatedProduct = _productService.UpdateProduct(product);
+
                 return Ok(updatedProduct);
             }
 
@@ -68,7 +70,7 @@ namespace ProgrammingClass4.AngularLesson.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteProduct(int id)
         {
-            var deletedProduct = _productRepository.DeleteProduct(id);
+            var deletedProduct = _productService.DeleteProduct(id);
 
             if (deletedProduct != null)
             {

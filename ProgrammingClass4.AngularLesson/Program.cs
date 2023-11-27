@@ -3,9 +3,12 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using ProgrammingClass4.AngularLesson.Data;
+using ProgrammingClass4.AngularLesson.DataTransferObjects.Mapping;
 using ProgrammingClass4.AngularLesson.Models;
 using ProgrammingClass4.AngularLesson.Repositories.Definitions;
 using ProgrammingClass4.AngularLesson.Repositories.Implementations;
+using ProgrammingClass4.AngularLesson.Services.Definitions;
+using ProgrammingClass4.AngularLesson.Services.Implementations;
 
 namespace ProgrammingClass4.AngularLesson
 {
@@ -33,9 +36,13 @@ namespace ProgrammingClass4.AngularLesson
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
 
+            builder.Services.AddAutoMapper(typeof(ProductProfile));
+
             builder.Services.AddTransient<IProductRepository, ProductRepository>();
             builder.Services.AddTransient<IProductTypeRepository, ProductTypeRepository>();
             builder.Services.AddTransient<IUnitOfMeasureRepository, UnitOfMeasureRepository>();
+
+            builder.Services.AddTransient<IProductService, ProductService>();
 
             var app = builder.Build();
 
