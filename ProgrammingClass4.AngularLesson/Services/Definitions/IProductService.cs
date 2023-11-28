@@ -7,7 +7,7 @@ namespace ProgrammingClass4.AngularLesson.Services.Definitions
         List<ProductDto> GetAllProducts();
 
         ProductDto? GetProduct(int id);
-
+         
         ProductDto AddProduct(ProductDto product);
 
         ProductDto UpdateProduct(ProductDto product);

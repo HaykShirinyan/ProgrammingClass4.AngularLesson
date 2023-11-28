@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProgrammingClass4.AngularLesson.Data;
+using ProgrammingClass4.AngularLesson.DataTransferObjects;
 using ProgrammingClass4.AngularLesson.Models;
 using ProgrammingClass4.AngularLesson.Repositories.Definitions;
 using ProgrammingClass4.AngularLesson.Repositories.Implementations;
+using ProgrammingClass4.AngularLesson.Services.Definitions;
 
 namespace ProgrammingClass4.AngularLesson.Controllers
 {
@@ -11,24 +14,24 @@ namespace ProgrammingClass4.AngularLesson.Controllers
     [ApiController]
     public class UnitOfMeasuresController : ControllerBase
     {
-        private readonly IUnitOfMeasureRepository _unitOfMeasureRepository;
+        private readonly IUnitOfMeasureService _unitOfMeasureService;
 
-        public UnitOfMeasuresController(IUnitOfMeasureRepository unitOfMeasureRepository)
+        public UnitOfMeasuresController(IUnitOfMeasureService unitOfMeasureService)
         {
-            _unitOfMeasureRepository = unitOfMeasureRepository;
+            _unitOfMeasureService = unitOfMeasureService;
         }
 
         [HttpGet]
         public IActionResult GetAllUnitOfMeasures()
         {
-            var unitOfMeasures = _unitOfMeasureRepository.GetAllUnits();
+            var unitOfMeasures = _unitOfMeasureService.GetAllUnitOfMeasures();
 
             return Ok(unitOfMeasures);
         }
         [HttpGet("{id}")]
         public IActionResult GetUnitOfMeasure(int id)
         {
-            var unitOfMeasure = _unitOfMeasureRepository.GetUnit(id);
+            var unitOfMeasure = _unitOfMeasureService.GetUnitOfMeasure(id);
 
             if (unitOfMeasure != null)
             {
@@ -38,11 +41,11 @@ namespace ProgrammingClass4.AngularLesson.Controllers
             return NotFound();
         }
         [HttpPost]
-        public IActionResult AddUnitOfMeasure(UnitOfMeasure unitOfMeasure)
+        public IActionResult AddUnitOfMeasure(UnitOfMeasureDto unitOfMeasure)
         {
             if (ModelState.IsValid)
             {
-                var addedUnitOfMeasure = _unitOfMeasureRepository.AddUnit(unitOfMeasure);
+                var addedUnitOfMeasure = _unitOfMeasureService.AddUnitOfMeasure(unitOfMeasure);
 
                 return Ok(addedUnitOfMeasure);
             }
@@ -50,7 +53,7 @@ namespace ProgrammingClass4.AngularLesson.Controllers
             return BadRequest(ModelState);
         }
         [HttpPut("{id}")]
-        public IActionResult UpdateUnitOfMeasure(int id, UnitOfMeasure unitOfMeasure)
+        public IActionResult UpdateUnitOfMeasure(int id, UnitOfMeasureDto unitOfMeasure)
         {
             if (id != unitOfMeasure.Id)
             {
@@ -59,7 +62,7 @@ namespace ProgrammingClass4.AngularLesson.Controllers
 
             if (ModelState.IsValid)
             {
-                var updatedUnit = _unitOfMeasureRepository.UpdateUnit(unitOfMeasure);
+                var updatedUnit = _unitOfMeasureService.UpdateUnitOfMeasure(unitOfMeasure);
 
                 return Ok(updatedUnit);
             }
@@ -70,7 +73,7 @@ namespace ProgrammingClass4.AngularLesson.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteUnitOfMeasure(int id)
         {
-            var deletedUnit = _unitOfMeasureRepository.DeleteUnit(id);
+            var deletedUnit = _unitOfMeasureService.DeleteUnitOfMeasure(id);
 
             if (deletedUnit != null)
             {

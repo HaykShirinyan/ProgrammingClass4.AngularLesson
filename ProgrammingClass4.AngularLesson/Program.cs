@@ -37,12 +37,16 @@ namespace ProgrammingClass4.AngularLesson
             builder.Services.AddRazorPages();
 
             builder.Services.AddAutoMapper(typeof(ProductProfile));
+            builder.Services.AddAutoMapper(typeof (ProductTypeProfile));
+            builder.Services.AddAutoMapper(typeof(UnitOfMeasureProfile));
 
             builder.Services.AddTransient<IProductRepository, ProductRepository>();
             builder.Services.AddTransient<IProductTypeRepository, ProductTypeRepository>();
             builder.Services.AddTransient<IUnitOfMeasureRepository, UnitOfMeasureRepository>();
 
             builder.Services.AddTransient<IProductService, ProductService>();
+            builder.Services.AddTransient<IProductTypeService, ProductTypeService>();
+            builder.Services.AddTransient<IUnitOfMeasureService, UnitOfMeasureService>();
 
             var app = builder.Build();
 
