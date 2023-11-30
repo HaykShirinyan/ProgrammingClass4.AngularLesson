@@ -43,6 +43,8 @@ namespace ProgrammingClass4.AngularLesson
             builder.Services.AddTransient<IUnitOfMeasureRepository, UnitOfMeasureRepository>();
 
             builder.Services.AddTransient<IProductService, ProductService>();
+            builder.Services.AddTransient<IProductTypeService, ProductTypeService>();
+            builder.Services.AddTransient<IUnitOfMeasureService, UnitOfMeasureService>();
 
             var app = builder.Build();
 
