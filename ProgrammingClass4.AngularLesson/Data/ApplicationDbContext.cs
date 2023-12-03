@@ -10,6 +10,8 @@ namespace ProgrammingClass4.AngularLesson.Data
     {
         public DbSet<Product> Products { get; set; }
 
+        public DbSet<Manufacturer> Manufacturers { get; set; }
+
         public ApplicationDbContext(DbContextOptions options, IOptions<OperationalStoreOptions> operationalStoreOptions)
             : base(options, operationalStoreOptions)
         {

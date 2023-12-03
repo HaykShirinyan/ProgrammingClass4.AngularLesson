@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { lastValueFrom, Observable } from "rxjs";
 import { Product } from "../models/product";
 
 @Injectable({
@@ -13,19 +13,23 @@ export class ProductService {
     this._http = http;
   }
 
-  public getAllProducts(): Observable<Product[]> {
-    return this._http.get<Product[]>('/api/products');
+  public getAllProducts(): Promise<Product[]> {
+    let observable = this._http.get<Product[]>('/api/products');
+    return lastValueFrom(observable);
   }
 
-  public addProduct(product: Product): Observable<Product> {
-    return this._http.post<Product>('/api/products', product);
+  public addProduct(product: Product): Promise<Product> {
+    let observable = this._http.post<Product>('/api/products', product);
+    return lastValueFrom(observable);
   }
 
-  public getProduct(id: number): Observable<Product> {
-    return this._http.get<Product>('/api/products/' + id);
+  public getProduct(id: number): Promise<Product> {
+    let observable = this._http.get<Product>('/api/products/' + id);
+    return lastValueFrom(observable);
   }
 
-  public updateProduct(product: Product): Observable<Product> {
-    return this._http.put<Product>('/api/products/' + product.id, product);
+  public updateProduct(product: Product): Promise<Product> {
+    let observable = this._http.put<Product>('/api/products/' + product.id, product);
+    return lastValueFrom(observable);
   }
 }

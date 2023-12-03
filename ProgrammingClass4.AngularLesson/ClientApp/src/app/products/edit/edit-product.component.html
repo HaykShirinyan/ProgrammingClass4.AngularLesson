@@ -59,6 +59,22 @@
              [(ngModel)]="product.unitPrice" />
     </div>
 
+    <div class="mb-3">
+      <label for="manufacturer-id" class="form-label">
+        Manufacturer
+      </label>
+      <select name="manufacturer.id"
+              [ngModel]="product.manufacturer?.id"
+              (ngModelChange)="manufacturerChanged($event)"
+              class="form-control">
+        <option value="">-- Please Select --</option>
+
+        <option *ngFor="let manufacturer of manufacturers" [value]="manufacturer.id">
+          {{manufacturer.name}}
+        </option>
+      </select>
+    </div>
+
     <div>
       <button type="submit" class="btn btn-primary">
         Save

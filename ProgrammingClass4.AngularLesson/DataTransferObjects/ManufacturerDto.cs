@@ -2,7 +2,7 @@
 
 namespace ProgrammingClass4.AngularLesson.DataTransferObjects
 {
-    public class ProductDto
+    public class ManufacturerDto
     {
         public int Id { get; set; }
 
@@ -12,11 +12,15 @@ namespace ProgrammingClass4.AngularLesson.DataTransferObjects
 
         [StringLength(500)]
         public string? Description { get; set; }
+    }
 
-        public int Quantity { get; set; }
+    public class ReferencedManufacturerDto
+    {
+        [Required]
+        public int? Id { get; set; }
 
-        public decimal UnitPrice { get; set; }
+        public string? Name { get; set; }
 
-        public ReferencedManufacturerDto? Manufacturer { get; set; }
+        public string? Description { get; set; }
     }
 }

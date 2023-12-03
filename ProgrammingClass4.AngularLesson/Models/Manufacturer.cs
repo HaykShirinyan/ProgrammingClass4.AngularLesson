@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ProgrammingClass4.AngularLesson.DataTransferObjects
+namespace ProgrammingClass4.AngularLesson.Models
 {
-    public class ProductDto
+    public class Manufacturer
     {
+        [Key]
         public int Id { get; set; }
 
         [Required]
@@ -12,11 +13,5 @@ namespace ProgrammingClass4.AngularLesson.DataTransferObjects
 
         [StringLength(500)]
         public string? Description { get; set; }
-
-        public int Quantity { get; set; }
-
-        public decimal UnitPrice { get; set; }
-
-        public ReferencedManufacturerDto? Manufacturer { get; set; }
     }
 }

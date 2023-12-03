@@ -39,8 +39,10 @@ namespace ProgrammingClass4.AngularLesson
             builder.Services.AddAutoMapper(typeof(ProductProfile));
 
             builder.Services.AddTransient<IProductRepository, ProductRepository>();
+            builder.Services.AddTransient<IManufacturerRepository, ManufacturerRepository>();
 
             builder.Services.AddTransient<IProductService, ProductService>();
+            builder.Services.AddTransient<IManufacturerService, ManufacturerService>();
 
             var app = builder.Build();
 
