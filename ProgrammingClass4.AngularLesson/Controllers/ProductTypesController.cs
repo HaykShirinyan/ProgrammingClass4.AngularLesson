@@ -14,6 +14,7 @@ namespace ProgrammingClass4.AngularLesson.Controllers
     public class ProductTypesController : ControllerBase
     {
         private readonly IProductTypeService _productTypeService;
+        
         public ProductTypesController(IProductTypeService productTypeService)
         {
            _productTypeService = productTypeService;
