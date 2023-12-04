@@ -5,7 +5,12 @@ namespace ProgrammingClass4.AngularLesson.DataTransferObjects.Mapping
 {
     public class UnitOfMeasureProfile : Profile
     {
+        public UnitOfMeasureProfile() 
+        {
             CreateMap<UnitOfMeasure, UnitOfMeasureDto>();
             CreateMap<UnitOfMeasureDto, UnitOfMeasure>();
+
+        }
+            
     }
 }

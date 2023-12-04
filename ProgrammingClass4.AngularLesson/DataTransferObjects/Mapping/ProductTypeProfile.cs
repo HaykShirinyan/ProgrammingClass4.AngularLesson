@@ -5,7 +5,11 @@ namespace ProgrammingClass4.AngularLesson.DataTransferObjects.Mapping
 {
     public class ProductTypeProfile : Profile
     {
+        public ProductTypeProfile() {
+
             CreateMap<ProductType, ProductTypeDto>();
             CreateMap<ProductTypeDto, ProductType>();
+        }
+           
     }
 }
