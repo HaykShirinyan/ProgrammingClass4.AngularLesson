@@ -8,7 +8,10 @@ namespace ProgrammingClass4.AngularLesson.DataTransferObjects.Mapping
         public ProductProfile() 
         { 
             CreateMap<Product, ProductDto>();
-            CreateMap<ProductDto, Product>();
+
+            CreateMap<ProductDto, Product>()
+                .ForMember(productModel => productModel.ManufacturerId, options => options.MapFrom(productDto => productDto.Manufacturer!.Id))
+                .ForMember(productModel => productModel.Manufacturer, options => options.Ignore());
         }
     }
 }

@@ -21,6 +21,7 @@
       <th>Description</th>
       <th>Quantity</th>
       <th>Unit Price</th>
+      <th>Manufacturer</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -41,6 +42,9 @@
       </td>
       <td>
         {{product.unitPrice}}
+      </td>
+      <td>
+        {{product.manufacturer?.name}}
       </td>
       <td>
         <a [routerLink]="['edit', product.id]" class="btn btn-secondary">

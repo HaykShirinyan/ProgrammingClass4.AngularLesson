@@ -1,4 +1,5 @@
-﻿using ProgrammingClass4.AngularLesson.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using ProgrammingClass4.AngularLesson.Data;
 using ProgrammingClass4.AngularLesson.Models;
 using ProgrammingClass4.AngularLesson.Repositories.Definitions;
 
@@ -15,12 +16,18 @@ namespace ProgrammingClass4.AngularLesson.Repositories.Implementations
 
         public List<Product> GetAllProducts()
         {
-            return _dbContext.Products.ToList();
+            return _dbContext
+                .Products
+                .Include(p => p.Manufacturer)
+                .ToList();
         }
 
         public Product? GetProduct(int id)
         {
-            return _dbContext.Products.SingleOrDefault(p => p.Id == id);
+            return _dbContext
+                .Products
+                .Include(p => p.Manufacturer)
+                .SingleOrDefault(p => p.Id == id);
         }
 
         public Product AddProduct(Product product)

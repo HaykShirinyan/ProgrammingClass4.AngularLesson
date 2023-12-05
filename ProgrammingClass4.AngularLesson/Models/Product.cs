@@ -17,5 +17,8 @@ namespace ProgrammingClass4.AngularLesson.Models
         public int Quantity { get; set; }
 
         public decimal UnitPrice { get; set; }
+
+        public int? ManufacturerId { get; set; }
+        public Manufacturer? Manufacturer { get; set; }
     }
 }

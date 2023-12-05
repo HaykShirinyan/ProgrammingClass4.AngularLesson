@@ -41,10 +41,12 @@ namespace ProgrammingClass4.AngularLesson
             builder.Services.AddAutoMapper(typeof(UnitOfMeasureProfile));
 
             builder.Services.AddTransient<IProductRepository, ProductRepository>();
+            builder.Services.AddTransient<IManufacturerRepository, ManufacturerRepository>();
             builder.Services.AddTransient<IProductTypeRepository, ProductTypeRepository>();
             builder.Services.AddTransient<IUnitOfMeasureRepository, UnitOfMeasureRepository>();
 
             builder.Services.AddTransient<IProductService, ProductService>();
+            builder.Services.AddTransient<IManufacturerService, ManufacturerService>();
             builder.Services.AddTransient<IProductTypeService, ProductTypeService>();
             builder.Services.AddTransient<IUnitOfMeasureService, UnitOfMeasureService>();
 
