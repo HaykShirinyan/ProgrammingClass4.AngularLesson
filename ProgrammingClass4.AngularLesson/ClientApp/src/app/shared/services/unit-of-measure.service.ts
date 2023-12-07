@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, lastValueFrom } from "rxjs";
 import { UnitOfMeasure } from "../models/unit-of-measure";
 
 @Injectable({
@@ -14,18 +14,22 @@ export class UnitOfMeasureService {
     this._http = http;
   }
 
-  public getAll(): Observable<UnitOfMeasure[]> {
-    return this._http.get<UnitOfMeasure[]>('./api/unitOfMeasures');
+  public getAll(): Promise<UnitOfMeasure[]> {
+    let observable = this._http.get<UnitOfMeasure[]>('./api/unitOfMeasures');
+    return lastValueFrom(observable);
   }
-  public addUnitOfMeasure(unitOfMeasure: UnitOfMeasure): Observable<UnitOfMeasure> {
-    return this._http.post<UnitOfMeasure>('/api/unitOfMeasures', unitOfMeasure);
-  }
-
-  public getUnitOfMeasure(id: number): Observable<UnitOfMeasure> {
-    return this._http.get<UnitOfMeasure>('/api/unitOfMeasures/' + id);
+  public addUnitOfMeasure(unitOfMeasure: UnitOfMeasure): Promise<UnitOfMeasure> {
+    let observable = this._http.post<UnitOfMeasure>('/api/unitOfMeasures', unitOfMeasure);
+    return lastValueFrom(observable);
   }
 
-  public updateUnitOfMeasure(unitOfMeasure: UnitOfMeasure): Observable<UnitOfMeasure> {
-    return this._http.put<UnitOfMeasure>('/api/unitOfMeasures/' + unitOfMeasure.id, unitOfMeasure);
+  public getUnitOfMeasure(id: number): Promise<UnitOfMeasure> {
+    let observable = this._http.get<UnitOfMeasure>('/api/unitOfMeasures/' + id);
+    return lastValueFrom(observable);
+  }
+
+  public updateUnitOfMeasure(unitOfMeasure: UnitOfMeasure): Promise<UnitOfMeasure> {
+    let observable = this._http.put<UnitOfMeasure>('/api/unitOfMeasures/' + unitOfMeasure.id, unitOfMeasure);
+    return lastValueFrom(observable);
   }
 }

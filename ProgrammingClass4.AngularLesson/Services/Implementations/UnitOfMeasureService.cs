@@ -17,17 +17,17 @@ namespace ProgrammingClass4.AngularLesson.Services.Implementations
             _mapper = mapper;
         }
 
-        public List<UnitOfMeasureDto> GetAllUnitOfMeasures()
+        public async Task <List<UnitOfMeasureDto>> GetAllAsync()
         {
-            var unitOfMeasureModelList = _unitOfMeasureRepository.GetAllUnits();
+            var unitOfMeasureModelList = await _unitOfMeasureRepository.GetAllAsync();
             var unitOfMeasureDtoList = _mapper.Map<List<UnitOfMeasure>, List<UnitOfMeasureDto>>(unitOfMeasureModelList);
 
             return unitOfMeasureDtoList;
         }
 
-        public UnitOfMeasureDto? GetUnit(int id)
+        public async Task< UnitOfMeasureDto?> GetAsync(int id)
         {
-            var unitOfMeasureModel = _unitOfMeasureRepository.GetUnit(id);
+            var unitOfMeasureModel = await _unitOfMeasureRepository.GetAsync(id);
 
             if (unitOfMeasureModel != null)
             {
@@ -38,29 +38,29 @@ namespace ProgrammingClass4.AngularLesson.Services.Implementations
             return null;
         }
 
-        public UnitOfMeasureDto AddUnitOfMeasure(UnitOfMeasureDto unitOfMeasure)
+        public async Task<UnitOfMeasureDto> AddAsync(UnitOfMeasureDto unitOfMeasure)
         {
             var unitOfMeasureModel = _mapper.Map<UnitOfMeasureDto, UnitOfMeasure>(unitOfMeasure);
 
-            var addedUnitOfMeassure = _unitOfMeasureRepository.AddUnit(unitOfMeasureModel);
+            var addedUnitOfMeassure = await _unitOfMeasureRepository.AddAsync(unitOfMeasureModel);
             var addedUnitOfMeasureDto = _mapper.Map<UnitOfMeasure, UnitOfMeasureDto>(addedUnitOfMeassure);
 
             return addedUnitOfMeasureDto;
         }
 
-        public UnitOfMeasureDto UpdateUnitOfMeasure(UnitOfMeasureDto unitOfMeasure)
+        public async Task<UnitOfMeasureDto> UpdateAsync(UnitOfMeasureDto unitOfMeasure)
         {
             var unitOfMeasureModel = _mapper.Map<UnitOfMeasureDto, UnitOfMeasure>(unitOfMeasure);
 
-            var updatedUnitOfMeasure = _unitOfMeasureRepository.UpdateUnit(unitOfMeasureModel);
+            var updatedUnitOfMeasure = await _unitOfMeasureRepository.UpdateAsync(unitOfMeasureModel);
             var updatedUnitOfMeasureDto = _mapper.Map<UnitOfMeasure, UnitOfMeasureDto>(updatedUnitOfMeasure);
 
             return updatedUnitOfMeasureDto;
         }
 
-        public UnitOfMeasureDto? DeleteUnitOfMeasure(int id)
+        public async Task<UnitOfMeasureDto>? DeleteAsync(int id)
         {
-            var deletedUnitOfMeasure = _unitOfMeasureRepository.DeleteUnit(id);
+            var deletedUnitOfMeasure = await _unitOfMeasureRepository.DeleteAsync(id);
 
             if (deletedUnitOfMeasure != null)
             {
@@ -71,9 +71,6 @@ namespace ProgrammingClass4.AngularLesson.Services.Implementations
             return null;
         }
 
-        public UnitOfMeasureDto? GetUnitOfMeasure(int id)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

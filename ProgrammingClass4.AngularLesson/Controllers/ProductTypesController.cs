@@ -21,17 +21,17 @@ namespace ProgrammingClass4.AngularLesson.Controllers
             _productTypeService = productTypeService;
         }
         [HttpGet]
-        public IActionResult GetAllProductTypes()
+        public async Task<IActionResult> GetAllAsync()
         {
-            var productTypes = _productTypeService.GetAllProductTypes();
+            var productTypes = await _productTypeService.GetAllAsync();
 
             return Ok(productTypes);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetProductType(int id)
+        public async Task<IActionResult> GetAsync(int id)
         {
-            var productType = _productTypeService.GetProductType(id);
+            var productType = await _productTypeService.GetAsync(id);
 
             if (productType != null)
             {
@@ -41,11 +41,11 @@ namespace ProgrammingClass4.AngularLesson.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddProductType(ProductTypeDto productType)
+        public async Task<IActionResult> AddAsync(ProductTypeDto productType)
         {
             if (ModelState.IsValid)
             {
-                var addedProductType = _productTypeService.AddProductType(productType);
+                var addedProductType = await _productTypeService.AddAsync(productType);
                     
                 return Ok(addedProductType);
             }
@@ -53,7 +53,7 @@ namespace ProgrammingClass4.AngularLesson.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateProductType(int id, ProductTypeDto productType)
+        public async Task<IActionResult> UpdateAsync(int id, ProductTypeDto productType)
         {
             if (productType.Id != id)
             {
@@ -61,7 +61,7 @@ namespace ProgrammingClass4.AngularLesson.Controllers
             }
             if (ModelState.IsValid)
             {
-                var updatedProductType = _productTypeService.UpdateProductType(productType);
+                var updatedProductType = await _productTypeService.UpdateAsync(productType);
 
                 return Ok(productType);
             }
@@ -70,9 +70,9 @@ namespace ProgrammingClass4.AngularLesson.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteProductType(int id)
+        public async Task<IActionResult> DeleteAsync(int id)
         {
-            var deletedPorductType = _productTypeService.DeleteProductType(id);
+            var deletedPorductType = await _productTypeService.DeleteAsync(id);
 
             if (deletedPorductType != null)
             {

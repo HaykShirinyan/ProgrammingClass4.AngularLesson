@@ -22,16 +22,16 @@ namespace ProgrammingClass4.AngularLesson.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllUnitOfMeasures()
+        public async Task<IActionResult> GetAllAsync()
         {
-            var unitOfMeasures = _unitOfMeasureService.GetAllUnitOfMeasures();
+            var unitOfMeasures = await _unitOfMeasureService.GetAllAsync();
 
             return Ok(unitOfMeasures);
         }
         [HttpGet("{id}")]
-        public IActionResult GetUnitOfMeasure(int id)
+        public async Task<IActionResult> GetAsync(int id)
         {
-            var unitOfMeasure = _unitOfMeasureService.GetUnitOfMeasure(id);
+            var unitOfMeasure = await _unitOfMeasureService.GetAsync(id);
 
             if (unitOfMeasure != null)
             {
@@ -41,11 +41,11 @@ namespace ProgrammingClass4.AngularLesson.Controllers
             return NotFound();
         }
         [HttpPost]
-        public IActionResult AddUnitOfMeasure(UnitOfMeasureDto unitOfMeasure)
+        public async Task<IActionResult> AddAsync(UnitOfMeasureDto unitOfMeasure)
         {
             if (ModelState.IsValid)
             {
-                var addedUnitOfMeasure = _unitOfMeasureService.AddUnitOfMeasure(unitOfMeasure);
+                var addedUnitOfMeasure =await  _unitOfMeasureService.AddAsync(unitOfMeasure);
 
                 return Ok(addedUnitOfMeasure);
             }
@@ -53,7 +53,7 @@ namespace ProgrammingClass4.AngularLesson.Controllers
             return BadRequest(ModelState);
         }
         [HttpPut("{id}")]
-        public IActionResult UpdateUnitOfMeasure(int id, UnitOfMeasureDto unitOfMeasure)
+        public async Task<IActionResult> UpdateAsync(int id, UnitOfMeasureDto unitOfMeasure)
         {
             if (id != unitOfMeasure.Id)
             {
@@ -62,7 +62,7 @@ namespace ProgrammingClass4.AngularLesson.Controllers
 
             if (ModelState.IsValid)
             {
-                var updatedUnit = _unitOfMeasureService.UpdateUnitOfMeasure(unitOfMeasure);
+                var updatedUnit =await _unitOfMeasureService.UpdateAsync(unitOfMeasure);
 
                 return Ok(updatedUnit);
             }
@@ -71,9 +71,9 @@ namespace ProgrammingClass4.AngularLesson.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteUnitOfMeasure(int id)
+        public async Task<IActionResult> DeleteAsync(int id)
         {
-            var deletedUnit = _unitOfMeasureService.DeleteUnitOfMeasure(id);
+            var deletedUnit = await _unitOfMeasureService.DeleteAsync(id);
 
             if (deletedUnit != null)
             {

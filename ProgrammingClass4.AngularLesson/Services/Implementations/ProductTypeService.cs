@@ -17,17 +17,17 @@ namespace ProgrammingClass4.AngularLesson.Services.Implementations
             _mapper = mapper;
         }
 
-        public List<ProductTypeDto> GetAllProductTypes()
+        public async Task<List<ProductTypeDto>> GetAllAsync()
         {
-            var productTypeModelList = _productTypeRepository.GetAllProductTypes();
-            var productTypeDtoList = _mapper.Map<List<ProductType>, List<ProductTypeDto>>(productTypeModelList);
+            var productTypeModelList = await _productTypeRepository.GetAllAsync();
+            var productTypeDtoList =  _mapper.Map<List<ProductType>, List<ProductTypeDto>>(productTypeModelList);
 
             return productTypeDtoList;
         }
 
-        public ProductTypeDto? GetProductType(int id)
+        public async Task<ProductTypeDto?> GetAsync(int id)
         {
-            var productTypeModel = _productTypeRepository.GetProductType(id);
+            var productTypeModel = await _productTypeRepository.GetAsync(id);
 
             if (productTypeModel != null)
             {
@@ -38,29 +38,29 @@ namespace ProgrammingClass4.AngularLesson.Services.Implementations
             return null;
         }
 
-        public ProductTypeDto AddProductType(ProductTypeDto productType)
+        public async Task<ProductTypeDto> AddAsync(ProductTypeDto productType)
         {
             var productTypeModel = _mapper.Map<ProductTypeDto, ProductType>(productType);
 
-            var addedProductType = _productTypeRepository.AddProductType(productTypeModel);
+            var addedProductType = await _productTypeRepository.AddAsync(productTypeModel);
             var addedProductTypeDto = _mapper.Map<ProductType, ProductTypeDto>(addedProductType);
 
             return addedProductTypeDto;
         }
 
-        public ProductTypeDto UpdateProductType(ProductTypeDto productType)
+        public async Task<ProductTypeDto> UpdateAsync(ProductTypeDto productType)
         {
             var productTypeModel = _mapper.Map<ProductTypeDto, ProductType>(productType);
 
-            var updatedProductType = _productTypeRepository.UpdateProductType(productTypeModel);
+            var updatedProductType = await _productTypeRepository.UpdateAsync(productTypeModel);
             var updatedProductTypeDto = _mapper.Map<ProductType, ProductTypeDto>(updatedProductType);
 
             return updatedProductTypeDto;
         }
 
-        public ProductTypeDto? DeleteProductType(int id)
+        public async Task<ProductTypeDto?> DeleteAsync(int id)
         {
-            var deletedProductType = _productTypeRepository.DeleteProductType(id);
+            var deletedProductType = await _productTypeRepository.DeleteAsync(id);
 
             if (deletedProductType != null)
             {

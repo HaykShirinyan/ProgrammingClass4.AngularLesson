@@ -20,25 +20,24 @@ export class EditProductTypeComponent implements OnInit {
 
   }
 
-  public ngOnInit(): void {
+  public async ngOnInit(): Promise<void> {
     this.isLoading = true;
-    this._productTypeService.getProductType(+this._activeRoute.snapshot.paramMap.get('id')!)
-      .subscribe(productType => {
-        this.productType = productType;
-        this.isLoading = false;
-      });
+
+    this.productType = await this._productTypeService.getProductType(+this._activeRoute.snapshot.paramMap.get('id')!)
+      
+    this.isLoading = false;
+      
   }
 
-  public editProductType(form: NgForm): void {
+  public async editProductType(form: NgForm): Promise<void> {
     if (form.valid) {
       this.isLoading = true;
       this.spinnerMessage = 'Updating Product';
 
-      this._productTypeService.updateProductType(this.productType)
-        .subscribe(() => {
-          this._router.navigate(['/productTypes']);
-          this.isLoading = false;
-        });
+      await this._productTypeService.updateProductType(this.productType)
+     
+      this._router.navigate(['/productTypes']);
+      this.isLoading = false;
     }
   }
 }

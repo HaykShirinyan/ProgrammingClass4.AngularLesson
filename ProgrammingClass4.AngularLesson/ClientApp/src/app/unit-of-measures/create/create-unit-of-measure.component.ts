@@ -17,14 +17,14 @@ export class CreateUnitOfMeasureComponent {
   ) {
   }
 
-  public createUnitOfMeasure(form: NgForm): void {
+  public async createUnitOfMeasure(form: NgForm): Promise<void> {
     if (form.valid) {
       this.isLoading = true;
-      this._unitOfMeasureService.addUnitOfMeasure(this.unitOfMeasure)
-        .subscribe(() => {
-          this._router.navigate(['/unitOfMeasures']);
-          this.isLoading = false;
-        });
+
+      await this._unitOfMeasureService.addUnitOfMeasure(this.unitOfMeasure)
+        
+      this._router.navigate(['/unitOfMeasures']);
+      this.isLoading = false;
     }
   }
 }

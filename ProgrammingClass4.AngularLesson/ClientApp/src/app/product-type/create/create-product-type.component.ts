@@ -17,15 +17,14 @@ export class CreateProductTypeComponent {
   ) {
   }
 
-  public createProductType(form: NgForm): void {
+  public async createProductType(form: NgForm): Promise<void> {
     if (form.valid) {
       this.isLoading = true;
 
-      this._productTypeService.addProductType(this.productType)
-        .subscribe(() => {
-          this._router.navigate(['/productTypes']);
-          this.isLoading = false;
-        });
+      await this._productTypeService.addProductType(this.productType)
+        
+      this._router.navigate(['/productTypes']);
+      this.isLoading = false;
     }
   }
 }

@@ -8,7 +8,9 @@
     <SpaProxyServerUrl>https://localhost:44461</SpaProxyServerUrl>
     <SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
     <ImplicitUsings>enable</ImplicitUsings>
+	<TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
   </PropertyGroup>
+	
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />

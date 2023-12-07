@@ -4,14 +4,14 @@ namespace ProgrammingClass4.AngularLesson.Services.Definitions
 {
     public interface IProductTypeService
     {
-        List<ProductTypeDto> GetAllProductTypes();
+        Task<List<ProductTypeDto>> GetAllAsync();
 
-        ProductTypeDto? GetProductType(int id);
+        Task<ProductTypeDto?> GetAsync(int id);
 
-        ProductTypeDto AddProductType(ProductTypeDto productType);
+        Task<ProductTypeDto> AddAsync(ProductTypeDto productType);
 
-        ProductTypeDto UpdateProductType(ProductTypeDto productType);
+        Task<ProductTypeDto> UpdateAsync(ProductTypeDto productType);
 
-        ProductTypeDto? DeleteProductType(int id);
+        Task<ProductTypeDto?> DeleteAsync(int id);
     }
 }
