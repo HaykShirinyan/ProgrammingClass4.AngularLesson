@@ -44,6 +44,7 @@
     <None Remove="ClientApp\src\app\products\edit\edit-product.component.ts" />
     <None Remove="ClientApp\src\app\products\list\product-list.component.ts" />
     <None Remove="ClientApp\src\app\shared\components\back\back.component.ts" />
+    <None Remove="ClientApp\src\app\shared\models\manufacturer.ts" />
     <None Remove="ClientApp\src\app\shared\models\product-Type.ts" />
     <None Remove="ClientApp\src\app\shared\components\loading-spinner\loading-spinner.component.ts" />
     <None Remove="ClientApp\src\app\shared\models\manufactuer.ts" />
@@ -61,7 +62,6 @@
     <TypeScriptCompile Include="ClientApp\src\app\products\edit\edit-product.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\products\list\product-list.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\components\loading-spinner\loading-spinner.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\shared\models\manufactuer.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\models\product.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\manufacturer.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\services\product.service.ts" />

@@ -19,6 +19,8 @@ namespace ProgrammingClass4.AngularLesson.Repositories.Implementations
             return _dbContext
                 .Products
                 .Include(p => p.Manufacturer)
+                .Include(p => p.ProductType)
+                .Include(p => p.UnitOfMeasure)
                 .ToList();
         }
 
@@ -27,6 +29,8 @@ namespace ProgrammingClass4.AngularLesson.Repositories.Implementations
             return _dbContext
                 .Products
                 .Include(p => p.Manufacturer)
+                .Include(p => p.ProductType)
+                .Include (p => p.UnitOfMeasure)
                 .SingleOrDefault(p => p.Id == id);
         }
 

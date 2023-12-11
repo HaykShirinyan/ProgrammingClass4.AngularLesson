@@ -9,6 +9,9 @@ namespace ProgrammingClass4.AngularLesson.DataTransferObjects.Mapping
 
             CreateMap<ProductType, ProductTypeDto>();
             CreateMap<ProductTypeDto, ProductType>();
+
+            CreateMap<ProductType, ReferencedProductTypeDto>()
+               .ReverseMap();
         }
            
     }

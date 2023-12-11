@@ -10,6 +10,9 @@ namespace ProgrammingClass4.AngularLesson.DataTransferObjects.Mapping
             CreateMap<UnitOfMeasure, UnitOfMeasureDto>();
             CreateMap<UnitOfMeasureDto, UnitOfMeasure>();
 
+            CreateMap<UnitOfMeasure, ReferencedUnitOfMeasureDto>()
+               .ReverseMap();
+
         }
             
     }

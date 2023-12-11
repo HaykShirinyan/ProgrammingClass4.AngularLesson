@@ -14,4 +14,13 @@ namespace ProgrammingClass4.AngularLesson.DataTransferObjects
         public string? Description { get; set; }
 
     }
+    public class ReferencedProductTypeDto
+    {
+        [Required]
+        public int? Id { get; set; }
+
+        public string? Name { get; set; }
+
+        public string? Description { get; set; }
+    }
 }
