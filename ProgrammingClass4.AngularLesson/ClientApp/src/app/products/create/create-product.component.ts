@@ -13,17 +13,17 @@ export class CreateProductComponent {
 
   constructor(
     private readonly _productService: ProductService,
-    private readonly _router: Router
+    private readonly _router: Router//
   ) {
   }
-
+  //creatProduct function kanchvuma Html ejic,event knopkaya (ngsubmit),kanchvuma save anelu hamar 
   public async createProduct(form: NgForm): Promise<void> {
     if (form.valid) {
       this.isLoading = true;
 
       await this._productService.addProduct(this.product);
 
-      this._router.navigate(['/products']);
+      this._router.navigate(['/products']);//nra hamara vor texapoxvenq products ej
       this.isLoading = false;
     }
   }
