@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { lastValueFrom } from "rxjs";
-import { Manufactuer } from "../models/manufactuer";
+import { Manufacturer } from "../models/manufacturer";
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,8 @@ export class ManufacturerService {
 
   }
 
-  public getAll(): Promise<Manufactuer[]> {
-    let observable = this._http.get<Manufactuer[]>('api/manufacturers');
+  public getAll(): Promise<Manufacturer[]> {
+    let observable = this._http.get<Manufacturer[]>('api/manufacturers');
     return lastValueFrom(observable);
   }
 }

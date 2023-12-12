@@ -76,6 +76,38 @@
       </select>
     </div>
 
+    <div class="mb-3">
+      <label for="product-type-id" class="form-label">
+        ProductType
+      </label>
+      <select name="productType.id"
+              [ngModel]="product.productType?.id"
+              (ngModelChange)="productTypeChanged($event)"
+              class="form-control">
+        <option value="">-- Please Select --</option>
+
+        <option *ngFor="let productType of productTypes" [value]="productType.id">
+          {{productType.name}}
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="unit-of-measure-id" class="form-label">
+        UnitOfMeasure
+      </label>
+      <select name="unitOfMeasure.id"
+              [ngModel]="product.unitOfMeasure?.id"
+              (ngModelChange)="unitOfMeasureChanged($event)"
+              class="form-control">
+        <option value="">-- Please Select --</option>
+
+        <option *ngFor="let unitOfMeasure of unitOfMeasures" [value]="unitOfMeasure.id">
+          {{unitOfMeasure.name}}
+        </option>
+      </select>
+    </div>
+
     <div>
       <button type="submit" class="btn btn-primary">
         Save
